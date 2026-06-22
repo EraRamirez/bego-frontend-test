@@ -1,11 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 @import "tailwindcss";
 
+@theme {
+  --color-bego-yellow: #ffee00;
+  --color-bego-yellow-hover: #e6d600;
+}
+
 :root {
   --bg: #000000;
   --surface: #141414;
   --border: #2a2a2a;
-  --yellow: #f4c430;
+  --yellow: #ffee00;
+  --yellow-hover: #e6d600;
   --muted: #9ca3af;
 }
 
