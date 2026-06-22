@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import LoadingScreen from '../components/LoadingScreen'
 import OrderCard from '../components/OrderCard'
 import PageHeader from '../components/PageHeader'
 import SearchBar from '../components/SearchBar'
@@ -34,7 +35,7 @@ export default function OrdersPage() {
       <SearchBar value={search} onChange={setSearch} />
 
       <div className="mt-4 space-y-4 px-4">
-        {loading && <p className="text-[#9ca3af]">Loading...</p>}
+        {loading && <LoadingScreen variant="inline" />}
         {error && <p className="text-red-400">{error}</p>}
 
         {!loading && !error && filteredOrders.length === 0 && (

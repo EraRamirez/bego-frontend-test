@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState, type SyntheticEvent } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { ASSETS } from '../constants/assets'
 import Accordion from '../components/Accordion'
+import LoadingScreen from '../components/LoadingScreen'
 import PageHeader from '../components/PageHeader'
 import Timeline from '../components/Timeline'
 import { DEFAULT_AVATAR, DESTINATION_TABS } from '../constants'
@@ -42,7 +44,16 @@ export default function OrderDetailsPage() {
   }, [order, tab])
 
   if (!order) {
-    return <p className="p-4 text-[#9ca3af]">Loading...</p>
+    return (
+      <div className="pb-8">
+        <PageHeader
+          title="Cargo Details"
+          showBack
+          onBack={() => navigate(-1)}
+        />
+        <LoadingScreen />
+      </div>
+    )
   }
 
   const canTrack = order.status >= 3
@@ -53,6 +64,8 @@ export default function OrderDetailsPage() {
   const handleAvatarError = (event: SyntheticEvent<HTMLImageElement>) => {
     event.currentTarget.src = DEFAULT_AVATAR
   }
+
+  const destinationIcon = tab === 'pickup' ? ASSETS.pickup : ASSETS.dropoff
 
   return (
     <div className="space-y-4 px-4 pb-8">
@@ -92,9 +105,13 @@ export default function OrderDetailsPage() {
                 ? 'bg-bego-yellow text-black'
                 : 'border border-[#444] text-[#9ca3af]'
             }`}
-            aria-hidden="true"
           >
-            🚛
+            <img
+              src={destinationIcon}
+              alt=""
+              className="h-[18px] w-auto"
+              aria-hidden="true"
+            />
           </div>
 
           <div>
