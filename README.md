@@ -1,73 +1,84 @@
-# React + TypeScript + Vite
+# BeGo — Prueba técnica Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Implementación de las pantallas **Cargo Orders** y **Cargo Details** para la prueba técnica de Frontend en BeGo.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19 + TypeScript
+- Vite
+- React Router
+- Tailwind CSS
+- API REST (fetch)
 
-## React Compiler
+## Requisitos
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js 18+
+- npm
 
-## Expanding the ESLint configuration
+## Instalación
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/EraRamirez/bego-frontend-test.git
+cd bego-frontend-test
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Desarrollo
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Abre [http://localhost:5173](http://localhost:5173) en el navegador.
+
+## Build de producción
+
+```bash
+npm run build
+npm run preview
+```
+
+## API
+
+| Endpoint | URL |
+|----------|-----|
+| Pedidos próximos | `GET /orders/upcoming` |
+| Detalle de pedido | `GET /orders` |
+
+Base URL: `https://129bc152-6319-4e38-b755-534a4ee46195.mock.pstmn.io`
+
+## Funcionalidades
+
+### Cargo Orders
+- Listado de órdenes desde la API
+- Búsqueda por número de orden
+- Countdown con `start_date`; al terminar habilita el botón y registra `Navegar` en consola
+- Navegación a detalle con el botón **Resume**
+
+### Cargo Details
+- Switch **Pickup / Dropoff** con datos de `destinations`
+- Timeline con checks según `status_list`
+- Botón **Track Order** activo solo si `status >= 3`
+- Panel **Pickup Data** expandible (accordion)
+- Avatar predeterminado si no hay imagen
+
+## Estructura del proyecto
+
+```
+src/
+├── components/
+├── pages/
+├── services/
+├── types/
+├── utils/
+├── App.tsx
+└── main.tsx
+```
+
+## Deploy
+
+Desplegado en Vercel: *[ ]*
+
+## Autora
+
+Erandi Guadalupe Ramírez Ayala
