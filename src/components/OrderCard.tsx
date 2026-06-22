@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { ASSETS, getOrderTypeIcon } from '../constants/assets'
 import { useCountdown } from '../hooks/useCountdown'
 import type { Destination, UpcomingOrder } from '../types/order'
 import {
@@ -14,19 +15,21 @@ interface DestinationStopProps {
   label: string
   destination?: Destination
   labelClassName: string
+  icon: string
 }
 
 function DestinationStop({
   label,
   destination,
   labelClassName,
+  icon,
 }: DestinationStopProps) {
   const timestamp = getDestinationTimestamp(destination)
 
   return (
     <div className="relative">
-      <span className="absolute -left-[31px] top-0 flex h-6 w-6 items-center justify-center rounded-full bg-[#1c1c1c] text-xs">
-        📍
+      <span className="absolute -left-[31px] top-0 flex h-6 w-6 items-center justify-center rounded-full bg-[#1c1c1c]">
+        <img src={icon} alt="" className="h-[18px] w-auto" aria-hidden="true" />
       </span>
       <p className={`text-[11px] font-bold tracking-wider ${labelClassName}`}>{label}</p>
       <p className="text-[15px] font-semibold">{cityFromAddress(destination?.address)}</p>
@@ -57,9 +60,12 @@ export default function OrderCard({ order }: OrderCardProps) {
     <article className="rounded-[20px] border border-[#2a2a2a] bg-[#141414] p-4">
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="text-lg" aria-hidden="true">
-            {order.type === 'FCL' ? '📦' : '🚛'}
-          </span>
+          <img
+            src={getOrderTypeIcon(order.type)}
+            alt=""
+            className="h-[15px] w-auto"
+            aria-hidden="true"
+          />
           <span className="text-[15px] font-bold">{order.type}</span>
         </div>
 
@@ -79,11 +85,13 @@ export default function OrderCard({ order }: OrderCardProps) {
           label="PICKUP"
           destination={pickup}
           labelClassName="text-bego-yellow"
+          icon={ASSETS.pickup}
         />
         <DestinationStop
           label="DROPOFF"
           destination={dropoff}
           labelClassName="text-[#9ca3af]"
+          icon={ASSETS.dropoff}
         />
       </div>
 
@@ -108,7 +116,13 @@ export default function OrderCard({ order }: OrderCardProps) {
             : 'cursor-not-allowed bg-[#2a2a2a] text-[#6b7280]'
         }`}
       >
-        <span aria-hidden="true">👁</span> Resume
+        <img
+          src={ASSETS.resume}
+          alt=""
+          className={`h-4 w-auto ${isReady ? '' : 'opacity-50'}`}
+          aria-hidden="true"
+        />
+        Resume
       </button>
     </article>
   )
