@@ -3,6 +3,7 @@ import dropoffIcon from '../assets/dropoff.svg'
 import fclIcon from '../assets/fcl.svg'
 import ftlIcon from '../assets/ftl.svg'
 import notiIcon from '../assets/noti.svg'
+import orderCheckIcon from '../assets/orderCheck.svg'
 import pickupIcon from '../assets/pickup.svg'
 import resumeIcon from '../assets/resume.svg'
 
@@ -12,6 +13,7 @@ export const ASSETS = {
   fcl: fclIcon,
   ftl: ftlIcon,
   noti: notiIcon,
+  orderCheck: orderCheckIcon,
   pickup: pickupIcon,
   resume: resumeIcon,
 } as const

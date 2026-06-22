@@ -14,12 +14,12 @@ export default function Accordion({
   const [open, setOpen] = useState(defaultOpen)
 
   return (
-    <div className="overflow-hidden rounded-[16px] bg-[#141414]">
+    <div className="overflow-hidden rounded-[20px] border border-[#2a2a2a] bg-[#141414]">
       <button
         type="button"
         onClick={() => setOpen((current) => !current)}
         aria-expanded={open}
-        className="flex w-full items-center justify-between px-4 py-4 text-[15px] font-bold"
+        className="flex w-full items-center justify-between px-4 py-4 text-[15px] font-bold text-white"
       >
         {title}
         <span

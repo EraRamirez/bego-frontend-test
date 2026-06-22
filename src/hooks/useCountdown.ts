@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 interface UseCountdownResult {
   remaining: number
@@ -9,21 +9,24 @@ export function useCountdown(targetTimestamp: number): UseCountdownResult {
   const [remaining, setRemaining] = useState(() =>
     Math.max(0, targetTimestamp - Date.now()),
   )
-  const [navigateLogged, setNavigateLogged] = useState(false)
+  const navigateLoggedRef = useRef(false)
 
   useEffect(() => {
-    const intervalId = window.setInterval(() => {
+    const tick = () => {
       const timeLeft = Math.max(0, targetTimestamp - Date.now())
       setRemaining(timeLeft)
 
-      if (timeLeft === 0 && !navigateLogged) {
+      if (timeLeft === 0 && !navigateLoggedRef.current) {
         console.log('Navegar')
-        setNavigateLogged(true)
+        navigateLoggedRef.current = true
       }
-    }, 1000)
+    }
+
+    tick()
+    const intervalId = window.setInterval(tick, 1000)
 
     return () => window.clearInterval(intervalId)
-  }, [targetTimestamp, navigateLogged])
+  }, [targetTimestamp])
 
   return {
     remaining,

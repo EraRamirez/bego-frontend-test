@@ -1,16 +1,18 @@
 interface LoadingScreenProps {
   message?: string
+  description?: string
   variant?: 'page' | 'inline'
 }
 
 export default function LoadingScreen({
   message = 'Loading...',
+  description,
   variant = 'page',
 }: LoadingScreenProps) {
   const containerClass =
     variant === 'page'
-      ? 'flex min-h-[calc(100vh-3.5rem)] flex-col items-center justify-center px-4'
-      : 'flex flex-col items-center justify-center py-16'
+      ? 'loading-screen loading-screen--page'
+      : 'loading-screen loading-screen--inline'
 
   return (
     <div
@@ -19,14 +21,13 @@ export default function LoadingScreen({
       aria-live="polite"
       aria-busy="true"
     >
-      <div className="relative flex h-12 w-12 items-center justify-center">
-        <span className="absolute h-12 w-12 animate-spin rounded-full border-2 border-[#2a2a2a] border-t-bego-yellow" />
-        <span className="h-2 w-2 rounded-full bg-bego-yellow" />
+      <div className="loading-screen-icon" aria-hidden="true">
+        <span className="loading-screen-ring" />
+        <span className="loading-screen-core" />
       </div>
 
-      <p className="mt-5 text-[14px] font-semibold tracking-wide text-[#9ca3af]">
-        {message}
-      </p>
+      <p className="loading-screen-title">{message}</p>
+      {description && <p className="loading-screen-description">{description}</p>}
     </div>
   )
 }

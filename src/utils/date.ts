@@ -44,8 +44,10 @@ export function formatLongDate(ms?: number): string {
 export function cityFromAddress(address?: string): string {
   if (!address) return '—'
 
-  const parts = address.split(',')
-  return parts[parts.length - 3]?.trim() || parts[0]?.trim() || '—'
+  const parts = address.split(',').map((part) => part.trim())
+  const rawCity = parts[parts.length - 3] || parts[1] || parts[0] || '—'
+
+  return rawCity.replace(/^\d+\s*/, '').trim() || rawCity
 }
 
 export function getDestinationTimestamp(destination?: {
