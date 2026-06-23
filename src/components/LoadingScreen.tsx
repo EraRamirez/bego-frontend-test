@@ -1,3 +1,5 @@
+import { ASSETS } from '../constants/assets'
+
 interface LoadingScreenProps {
   message?: string
   description?: string
@@ -22,8 +24,7 @@ export default function LoadingScreen({
       aria-busy="true"
     >
       <div className="loading-screen-icon" aria-hidden="true">
-        <span className="loading-screen-ring" />
-        <span className="loading-screen-core" />
+        <img src={ASSETS.logo} alt="" className="loading-screen-logo" />
       </div>
 
       <p className="loading-screen-title">{message}</p>
