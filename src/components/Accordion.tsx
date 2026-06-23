@@ -1,40 +1,105 @@
-import { useState, type ReactNode } from 'react'
+import {
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ReactNode,
+  type TransitionEvent,
+} from 'react'
 
 interface AccordionProps {
   title: string
   children: ReactNode
   defaultOpen?: boolean
+  open?: boolean
+  onOpenChange?: (open: boolean) => void
 }
 
 export default function Accordion({
   title,
   children,
-  defaultOpen = true,
+  defaultOpen = false,
+  open: openProp,
+  onOpenChange,
 }: AccordionProps) {
-  const [open, setOpen] = useState(defaultOpen)
+  const innerRef = useRef<HTMLDivElement>(null)
+  const [openUncontrolled, setOpenUncontrolled] = useState(defaultOpen)
+  const [isClosing, setIsClosing] = useState(false)
+  const [maxHeight, setMaxHeight] = useState(0)
+
+  const isControlled = openProp !== undefined
+  const open = isControlled ? openProp : openUncontrolled
+
+  const setOpen = (nextOpen: boolean) => {
+    if (!isControlled) {
+      setOpenUncontrolled(nextOpen)
+    }
+    onOpenChange?.(nextOpen)
+  }
+
+  const getContentHeight = () => innerRef.current?.scrollHeight ?? 0
+
+  useLayoutEffect(() => {
+    if (open) {
+      setMaxHeight(getContentHeight())
+      return
+    }
+
+    if (!isClosing) {
+      setMaxHeight(0)
+    }
+  }, [open, isClosing, children])
+
+  const toggle = () => {
+    if (open) {
+      setMaxHeight(getContentHeight())
+      requestAnimationFrame(() => {
+        setMaxHeight(0)
+        setIsClosing(true)
+        setOpen(false)
+      })
+      return
+    }
+
+    setIsClosing(false)
+    setOpen(true)
+    requestAnimationFrame(() => {
+      setMaxHeight(getContentHeight())
+    })
+  }
+
+  const handleTransitionEnd = (event: TransitionEvent<HTMLDivElement>) => {
+    if (event.propertyName !== 'max-height') return
+    if (isClosing) setIsClosing(false)
+  }
 
   return (
-    <div className="overflow-hidden rounded-[20px] border border-[#2a2a2a] bg-[#141414]">
-      <button
-        type="button"
-        onClick={() => setOpen((current) => !current)}
-        aria-expanded={open}
-        className="flex w-full items-center justify-between px-4 py-4 text-[15px] font-bold text-white"
-      >
-        {title}
-        <span
-          className={`text-bego-yellow transition-transform ${open ? '' : 'rotate-180'}`}
-          aria-hidden="true"
+    <div className="pickup-data-panel">
+      <div className="pickup-data-panel-trigger-border order-card-border w-full max-w-full min-w-0">
+        <button
+          type="button"
+          onClick={toggle}
+          aria-expanded={open}
+          className="order-card-surface pickup-data-panel-trigger w-full"
         >
-          ▲
-        </span>
-      </button>
+          <span>{title}</span>
+          <span
+            className={`pickup-data-panel-chevron ${open ? '' : 'pickup-data-panel-chevron--closed'}`}
+            aria-hidden="true"
+          >
+            ▲
+          </span>
+        </button>
+      </div>
 
-      {open && (
-        <div className="space-y-2 border-t border-[#2a2a2a] px-4 py-4 text-[13px] leading-relaxed text-[#d1d5db]">
+      <div
+        className="expandable-panel overflow-hidden"
+        style={{ maxHeight: `${maxHeight}px` }}
+        onTransitionEnd={handleTransitionEnd}
+      >
+        <div ref={innerRef} className="pickup-data-panel-body expandable-panel-content">
           {children}
         </div>
-      )}
+      </div>
     </div>
   )
 }
