@@ -1,0 +1,32 @@
+<svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+<foreignObject x="-65.8722" y="-65.3722" width="172" height="172"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(35px);clip-path:url(#bgblur_0_0_1_clip_path);height:100%;width:100%"></div></foreignObject><g filter="url(#filter0_i_0_1)" data-figma-bg-blur-radius="70">
+<circle cx="20.1278" cy="20.6278" r="16" fill="#FFEE00"/>
+</g>
+<circle cx="20.1278" cy="20.1278" r="19.6278" stroke="#FFFF00"/>
+<path d="M13.9815 27.1765C13.9815 27.9781 13.3264 28.6277 12.5181 28.6277C11.7098 28.6277 11.0547 27.9781 11.0547 27.1765C11.0547 26.3749 11.7098 25.7252 12.5181 25.7252C13.3264 25.7252 13.9815 26.3749 13.9815 27.1765Z" stroke="#080C0F" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.9083 27.1765C16.9083 27.9781 16.2532 28.6277 15.4449 28.6277C14.6366 28.6277 13.9814 27.9781 13.9814 27.1765C13.9814 26.3749 14.6366 25.7252 15.4449 25.7252C16.2532 25.7252 16.9083 26.3749 16.9083 27.1765Z" stroke="#080C0F" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27.4449 27.1765C27.4449 27.9781 26.7898 28.6277 25.9815 28.6277C25.1732 28.6277 24.5181 27.9781 24.5181 27.1765C24.5181 26.3749 25.1732 25.7252 25.9815 25.7252C26.7898 25.7252 27.4449 26.3749 27.4449 27.1765Z" stroke="#080C0F" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M19.9814 27.1765V13.6311C19.9814 13.0966 20.418 12.6636 20.9571 12.6636H23.0546C25.4795 12.6636 27.4449 14.6127 27.4449 17.0175V18.1518C27.4449 19.9299 28.8863 21.3713 30.6644 21.3713C31.4727 21.3713 32.1278 22.021 32.1278 22.8226V26.2089C32.1278 26.7435 31.6912 27.1765 31.1522 27.1765H27.4449" stroke="#080C0F" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.0546 27.1765H8.12781" stroke="#FFFF00" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27.4449 21.3713H25.2316C24.0293 21.3713 23.0547 20.3967 23.0547 19.1944C23.0547 17.9921 24.0293 17.0175 25.2316 17.0175H27.4449" stroke="#080C0F" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M26.739 20.6458H25.628C25.0245 20.6458 24.5353 20.1565 24.5353 19.553C24.5353 18.9495 25.0245 18.4603 25.628 18.4603H26.739" fill="#FFFF00"/>
+<path d="M16.9083 17.0175H19.9815" stroke="#080C0F" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M19.9814 17.0175H23.0546" stroke="#080C0F" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M30.6644 24.2739H32.1278" stroke="#FFFF00" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17.3961 21.8551C17.3961 22.1222 17.1778 22.3389 16.9083 22.3389C16.6389 22.3389 16.4205 22.1222 16.4205 21.8551C16.4205 21.588 16.6389 21.3713 16.9083 21.3713C17.1778 21.3713 17.3961 21.588 17.3961 21.8551Z" fill="#FFFF00"/>
+<path d="M15.4448 12.6636C16.3814 13.5924 16.9082 14.8569 16.9082 16.1759V19.6782" stroke="#080C0F" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.9083 24.032C16.9083 25.7686 18.3161 27.1765 20.0528 27.1765H24.5181" stroke="#080C0F" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<defs>
+<filter id="filter0_i_0_1" x="-65.8722" y="-65.3722" width="172" height="172" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="1" dy="-4"/>
+<feGaussianBlur stdDeviation="3.75"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.7625 0 0 0 0 0.711667 0 0 0 0 0 0 0 0 1 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_0_1"/>
+</filter>
+<clipPath id="bgblur_0_0_1_clip_path" transform="translate(65.8722 65.3722)"><circle cx="20.1278" cy="20.6278" r="16"/>
+</clipPath></defs>
+</svg>
