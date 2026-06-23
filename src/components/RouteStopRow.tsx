@@ -4,23 +4,42 @@ interface RouteStopRowProps {
   icon: string
   iconClassName: string
   children: ReactNode
-  align?: 'card' | 'detail'
+  iconVariant?: 'compact' | 'badge'
+  onSelect?: () => void
 }
 
 export default function RouteStopRow({
   icon,
   iconClassName,
   children,
-  align = 'card',
+  iconVariant = 'compact',
+  onSelect,
 }: RouteStopRowProps) {
-  return (
-    <div className="flex items-start gap-3">
-      <div
-        className={`route-stop-icon-slot route-stop-icon-slot--${align} flex w-7 shrink-0 items-center justify-center`}
-      >
+  const slotClass =
+    iconVariant === 'badge'
+      ? 'route-stop-icon-slot route-stop-icon-slot--badge'
+      : 'route-stop-icon-slot route-stop-icon-slot--card'
+
+  const content = (
+    <>
+      <div className={`${slotClass} flex shrink-0 items-center justify-center`}>
         <img src={icon} alt="" className={iconClassName} aria-hidden="true" />
       </div>
       {children}
-    </div>
+    </>
   )
+
+  if (onSelect) {
+    return (
+      <button
+        type="button"
+        onClick={onSelect}
+        className="selectable-stop-row flex w-full min-w-0 items-start gap-3 border-none bg-transparent p-0 text-left"
+      >
+        {content}
+      </button>
+    )
+  }
+
+  return <div className="flex min-w-0 items-start gap-3">{content}</div>
 }

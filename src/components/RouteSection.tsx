@@ -15,14 +15,20 @@ const ROW_GAP = {
 
 export default function RouteSection({
   children,
-  className = 'mt-8',
+  className,
   rowGap = 'md',
   hasStopLabels = false,
 }: RouteSectionProps) {
+  const sectionClassName = [
+    'relative',
+    hasStopLabels ? 'route-section--labeled' : '',
+    className?.trim() || 'mt-[20px]',
+  ]
+    .filter(Boolean)
+    .join(' ')
+
   return (
-    <div
-      className={`relative ${hasStopLabels ? 'route-section--labeled' : ''} ${className}`}
-    >
+    <div className={sectionClassName}>
       <RouteTrackLine />
       <div className={`relative z-10 ${ROW_GAP[rowGap]}`}>{children}</div>
     </div>
