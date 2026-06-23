@@ -13,8 +13,10 @@ export default function CardShell({
 }: CardShellProps) {
   if (variant === 'order') {
     return (
-      <div className="order-card-border w-full">
-        <article className={`order-card-surface px-3.5 pb-0 pt-3.5 ${className}`}>
+      <div className="order-card-border w-full max-w-full min-w-0">
+        <article
+          className={`order-card-surface min-w-0 px-3.5 pb-0 pt-3.5 ${className}`}
+        >
           {children}
         </article>
       </div>
@@ -22,7 +24,9 @@ export default function CardShell({
   }
 
   return (
-    <div className={`rounded-[20px] border border-[#2a2a2a] bg-[#141414] ${className}`}>
+    <div
+      className={`min-w-0 rounded-[20px] border border-[#2a2a2a] bg-[#141414] ${className}`}
+    >
       {children}
     </div>
   )

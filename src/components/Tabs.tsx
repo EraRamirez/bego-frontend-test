@@ -41,7 +41,7 @@ export default function Tabs({ active, onChange }: TabsProps) {
             aria-selected={isActive}
             onClick={() => onChange(tab)}
             className={`relative pb-3 text-[15px] transition-colors duration-200 ${TAB_ALIGNMENT[index]} ${
-              isActive ? 'font-semibold text-bego-yellow' : 'font-normal text-[#9ca3af]'
+              isActive ? 'font-semibold text-bego-yellow' : 'font-normal text-bego-gray'
             }`}
           >
             {tab}

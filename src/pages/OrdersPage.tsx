@@ -33,7 +33,7 @@ export default function OrdersPage() {
     <div className="pb-8">
       <PageHeader title="Cargo Orders" />
 
-      <div className="px-4">
+      <div className="page-gutter">
         <Tabs active={tab} onChange={setTab} />
         <SearchBar value={search} onChange={setSearch} />
 

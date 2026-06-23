@@ -25,7 +25,7 @@ export default function SearchBar({ value, onChange }: SearchBarProps) {
           onChange={(event) => onChange(event.target.value)}
           placeholder=""
           aria-label="Buscar por número de orden"
-          className="flex-1 bg-transparent text-[15px] text-white outline-none placeholder:text-[#6b7280]"
+          className="flex-1 bg-transparent text-[15px] text-white outline-none placeholder:text-bego-gray"
         />
       </div>
     </div>
