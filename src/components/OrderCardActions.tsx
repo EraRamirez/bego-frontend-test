@@ -28,7 +28,11 @@ export default function OrderCardActions({
       <button
         type="button"
         disabled={!isReady}
-        onClick={onResume}
+        aria-disabled={!isReady}
+        onClick={() => {
+          if (!isReady) return
+          onResume()
+        }}
         className={`order-card-action order-card-action--right ${
           isReady ? 'order-card-action--yellow' : 'order-card-action--disabled'
         }`}

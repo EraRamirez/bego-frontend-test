@@ -1,11 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import CardShell from './CardShell'
-import DestinationStop from './DestinationStop'
 import OrderCardActions from './OrderCardActions'
 import OrderCardHeader from './OrderCardHeader'
-import RouteSection from './RouteSection'
-import RouteStopRow from './RouteStopRow'
-import { ROUTE_ICONS } from '../constants/route'
+import OrderRouteStops from './OrderRouteStops'
 import { useCountdown } from '../hooks/useCountdown'
 import type { UpcomingOrder } from '../types/order'
 
@@ -15,7 +12,7 @@ interface OrderCardProps {
 
 export default function OrderCard({ order }: OrderCardProps) {
   const navigate = useNavigate()
-  const { remaining, isReady } = useCountdown(order.start_date)
+  const { remaining, isReady } = useCountdown(order.start_date, order.order_number)
   const [pickup, dropoff] = order.destinations
 
   const handleResume = () => {
@@ -30,21 +27,7 @@ export default function OrderCard({ order }: OrderCardProps) {
         statusClass={order.status_class}
       />
 
-      <RouteSection hasStopLabels>
-        <RouteStopRow
-          icon={ROUTE_ICONS.pickup.src}
-          iconClassName={ROUTE_ICONS.pickup.className}
-        >
-          <DestinationStop variant="card" label="PICKUP" destination={pickup} />
-        </RouteStopRow>
-
-        <RouteStopRow
-          icon={ROUTE_ICONS.dropoff.src}
-          iconClassName={ROUTE_ICONS.dropoff.className}
-        >
-          <DestinationStop variant="card" label="DROPOFF" destination={dropoff} />
-        </RouteStopRow>
-      </RouteSection>
+      <OrderRouteStops pickup={pickup} dropoff={dropoff} />
 
       <OrderCardActions
         isReady={isReady}
