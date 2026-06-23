@@ -31,7 +31,7 @@ export default function OrderCardHeader({
 
       <div className="flex items-center gap-1.5">
         {isBlue && (
-          <span className="h-1.5 w-1.5 rounded-full bg-[#3b82f6]" aria-hidden="true" />
+          <span className="status-pill-dot status-pill-dot--blue" aria-hidden="true" />
         )}
         <Text as="span" variant="card-status">
           {status}
