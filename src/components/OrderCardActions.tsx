@@ -16,11 +16,11 @@ export default function OrderCardActions({
     <div className="order-card-actions">
       {isReady ? (
         <div className="order-card-action order-card-action--left order-card-action--yellow">
-          Its time for pickup
+          Es hora de la recogida
         </div>
       ) : (
         <p className="order-card-countdown">
-          <span>Start pickup in</span>
+          <span>Inicia recogida en</span>
           <span className="order-card-countdown-time">{formatCountdown(remaining)}</span>
         </p>
       )}
@@ -38,7 +38,7 @@ export default function OrderCardActions({
         }`}
       >
         <span className="flex items-center gap-3">
-          Resume
+          Continuar
           <img
             src={ASSETS.resume}
             alt=""

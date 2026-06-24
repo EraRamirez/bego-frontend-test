@@ -12,7 +12,7 @@ async function fetchJson<T>(endpoint: string, path: string): Promise<T> {
 
   if (!response.ok) {
     console.error(`[API] Error ${endpoint}:`, response.status, response.statusText)
-    throw new Error(`Request failed: ${response.status}`)
+    throw new Error(`Error en la solicitud: ${response.status}`)
   }
 
   const data: ApiResponse<T> = await response.json()

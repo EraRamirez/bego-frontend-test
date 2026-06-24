@@ -13,7 +13,7 @@ import { filterOrders } from '../utils/order'
 export default function OrdersPage() {
   const [orders, setOrders] = useState<UpcomingOrder[]>([])
   const [search, setSearch] = useState('')
-  const [tab, setTab] = useState<OrdersTab>('Upcoming')
+  const [tab, setTab] = useState<OrdersTab>('Próximos')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
@@ -31,7 +31,7 @@ export default function OrdersPage() {
 
   return (
     <div className="pb-8">
-      <PageHeader title="Cargo Orders" />
+      <PageHeader title="Pedidos de carga" />
 
       <div className="page-gutter">
         <Tabs active={tab} onChange={setTab} />
@@ -41,8 +41,8 @@ export default function OrdersPage() {
           {loading && (
             <LoadingScreen
               variant="inline"
-              message="Loading orders"
-              description="Fetching your cargo trips..."
+              message="Cargando pedidos"
+              description="Obteniendo tus viajes de carga..."
             />
           )}
           {error && <p className="text-red-400">{error}</p>}

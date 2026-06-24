@@ -46,13 +46,13 @@ export default function OrderDetailsPage() {
     return (
       <div className="pb-8">
         <PageHeader
-          title="Cargo Details"
+          title="Detalle de carga"
           showBack
           onBack={() => navigate(-1)}
         />
         <LoadingScreen
-          message="Loading details"
-          description="Fetching order information..."
+          message="Cargando detalles"
+          description="Obteniendo información del pedido..."
         />
       </div>
     )
@@ -61,7 +61,7 @@ export default function OrderDetailsPage() {
   const canTrack = order.status >= 3
   const avatar = order.driver?.thumbnail || order.driver_thumbnail || DEFAULT_AVATAR
   const destStart = getDestinationTimestamp(destination)
-  const accordionTitle = tab === 'pickup' ? 'Pickup Data' : 'Dropoff Data'
+  const accordionTitle = tab === 'pickup' ? 'Datos de recogida' : 'Datos de entrega'
 
   const handleAvatarError = (event: SyntheticEvent<HTMLImageElement>) => {
     event.currentTarget.src = DEFAULT_AVATAR
@@ -73,13 +73,13 @@ export default function OrderDetailsPage() {
   }
 
   const handleTrackOrder = () => {
-    console.log(`Track Order — Order #${order.order_number}`)
+    console.log(`Rastrear pedido — Pedido #${order.order_number}`)
   }
 
   return (
     <div className="order-details-page page-gutter min-w-0 space-y-5 overflow-x-hidden pb-8">
       <PageHeader
-        title="Cargo Details"
+        title="Detalle de carga"
         showBack
         onBack={() => navigate(-1)}
       />

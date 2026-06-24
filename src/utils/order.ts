@@ -1,4 +1,5 @@
 import type { Destination, OrdersTab, OrderDetail, UpcomingOrder } from '../types/order'
+import { isAcceptedStatus } from './translate'
 
 export function filterOrders(
   orders: UpcomingOrder[],
@@ -7,11 +8,11 @@ export function filterOrders(
 ): UpcomingOrder[] {
   let filtered = orders
 
-  if (tab === 'Completed') {
+  if (tab === 'Completados') {
     filtered = filtered.filter((order) => order.status >= 3)
   }
 
-  if (tab === 'Past') {
+  if (tab === 'Pasados') {
     filtered = filtered.filter((order) => order.status >= 5)
   }
 
@@ -35,10 +36,7 @@ export function isDestinationActiveState(
   fallbackStatus?: string,
 ): boolean {
   const statusLabel = destination?.status_string ?? fallbackStatus ?? ''
-  return (
-    isBlueStatus(destination?.status_class) ||
-    statusLabel.toLowerCase() === 'accepted'
-  )
+  return isBlueStatus(destination?.status_class) || isAcceptedStatus(statusLabel)
 }
 
 function mergeDestinations(

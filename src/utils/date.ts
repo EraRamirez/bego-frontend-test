@@ -12,7 +12,7 @@ export function formatCountdown(ms: number): string {
 export function formatDate(ms?: number): string {
   if (!ms) return ''
 
-  return new Date(ms).toLocaleDateString('en-GB', {
+  return new Date(ms).toLocaleDateString('es-MX', {
     day: '2-digit',
     month: '2-digit',
     year: '2-digit',
@@ -22,7 +22,7 @@ export function formatDate(ms?: number): string {
 export function formatTime(ms?: number): string {
   if (!ms) return ''
 
-  return new Date(ms).toLocaleTimeString('en-US', {
+  return new Date(ms).toLocaleTimeString('es-MX', {
     hour: 'numeric',
     minute: '2-digit',
     hour12: true,

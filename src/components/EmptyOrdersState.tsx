@@ -10,17 +10,17 @@ const TAB_COPY: Record<
   OrdersTab,
   { title: string; description: string }
 > = {
-  Upcoming: {
-    title: 'No upcoming orders',
-    description: 'New cargo orders will appear here when they are ready for pickup.',
+  Próximos: {
+    title: 'No hay pedidos próximos',
+    description: 'Los nuevos pedidos de carga aparecerán aquí cuando estén listos para recoger.',
   },
-  Completed: {
-    title: 'No completed orders',
-    description: 'Orders you finish will show up in this tab.',
+  Completados: {
+    title: 'No hay pedidos completados',
+    description: 'Los pedidos que finalices se mostrarán en esta pestaña.',
   },
-  Past: {
-    title: 'No past orders',
-    description: 'Your order history will appear here once trips are completed.',
+  Pasados: {
+    title: 'No hay pedidos pasados',
+    description: 'Tu historial de pedidos aparecerá aquí una vez que los viajes se completen.',
   },
 }
 
@@ -33,11 +33,11 @@ export default function EmptyOrdersState({
   const isSearchEmpty = query.length > 0
 
   const title = isSearchEmpty
-    ? `No results for “${query}”`
+    ? `Sin resultados para “${query}”`
     : TAB_COPY[tab].title
 
   const description = isSearchEmpty
-    ? 'Try another order number or clear your search to see all orders.'
+    ? 'Prueba con otro número de pedido o limpia la búsqueda para ver todos los pedidos.'
     : TAB_COPY[tab].description
 
   return (
@@ -102,7 +102,7 @@ export default function EmptyOrdersState({
           onClick={onClearSearch}
           className="empty-orders-state-action mt-6 text-[13px] font-semibold text-bego-yellow transition-opacity hover:opacity-80"
         >
-          Clear search
+          Limpiar búsqueda
         </button>
       )}
     </div>

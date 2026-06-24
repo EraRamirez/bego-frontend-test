@@ -46,7 +46,7 @@ export default function OrderStatusCard({
           className="track-order-button mt-6"
         >
           <Text as="span" variant="order-number" className="track-order-button-label">
-            Track Order
+            Rastrear pedido
           </Text>
         </button>
       </CardShell>

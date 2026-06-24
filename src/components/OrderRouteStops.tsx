@@ -40,8 +40,8 @@ export default function OrderRouteStops({
       : DETAIL_STOP_ICONS.inactive
   }
 
-  const pickupIcon = getStopIcon('pickup', pickup, 'Accepted')
-  const dropoffIcon = getStopIcon('dropoff', dropoff, 'On hold')
+  const pickupIcon = getStopIcon('pickup', pickup, 'Aceptado')
+  const dropoffIcon = getStopIcon('dropoff', dropoff, 'En espera')
 
   const sectionClassName = [
     isSelectable ? 'route-section--badges' : '',
@@ -63,11 +63,11 @@ export default function OrderRouteStops({
         onSelect={isSelectable ? () => onSelectStop?.('pickup') : undefined}
       >
         <DestinationStop
-          label="PICKUP"
+          label="RECOGIDA"
           destination={pickup}
           mode={mode}
           isActive={!isSelectable || activeStop === 'pickup'}
-          fallbackStatus="Accepted"
+          fallbackStatus="Aceptado"
         />
       </RouteStopRow>
 
@@ -78,11 +78,11 @@ export default function OrderRouteStops({
         onSelect={isSelectable ? () => onSelectStop?.('dropoff') : undefined}
       >
         <DestinationStop
-          label="DROPOFF"
+          label="ENTREGA"
           destination={dropoff}
           mode={mode}
           isActive={!isSelectable || activeStop === 'dropoff'}
-          fallbackStatus="On hold"
+          fallbackStatus="En espera"
         />
       </RouteStopRow>
     </RouteSection>

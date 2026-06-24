@@ -1,5 +1,6 @@
 import { TIMELINE_ICONS } from '../constants/route'
 import type { StatusStep } from '../types/order'
+import { translateStatus } from '../utils/translate'
 import Text from './ui/Text'
 
 interface TimelineProps {
@@ -60,7 +61,7 @@ export default function Timeline({ steps }: TimelineProps) {
               variant="detail-address"
               className={`leading-snug ${step.active ? 'font-medium text-white' : 'text-bego-gray'}`}
             >
-              {step.status}
+              {translateStatus(step.status)}
             </Text>
           </div>
         )

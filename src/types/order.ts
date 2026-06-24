@@ -47,4 +47,4 @@ export interface OrderDetail extends UpcomingOrder {
 
 export type DestinationTab = 'pickup' | 'dropoff'
 
-export type OrdersTab = 'Upcoming' | 'Completed' | 'Past'
+export type OrdersTab = 'Próximos' | 'Completados' | 'Pasados'

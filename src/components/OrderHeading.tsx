@@ -8,7 +8,7 @@ export default function OrderHeading({ orderNumber }: OrderHeadingProps) {
   return (
     <p className="leading-none">
       <Text as="span" variant="order-label">
-        Order{' '}
+        Pedido{' '}
       </Text>
       <Text as="span" variant="order-number">
         #{orderNumber}

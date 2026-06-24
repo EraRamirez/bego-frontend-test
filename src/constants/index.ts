@@ -4,6 +4,6 @@ export const API_BASE_URL =
 
 export const DEFAULT_AVATAR = '/default-avatar.svg'
 
-export const ORDERS_TABS = ['Upcoming', 'Completed', 'Past'] as const
+export const ORDERS_TABS = ['Próximos', 'Completados', 'Pasados'] as const
 
 export const DESTINATION_TABS = ['pickup', 'dropoff'] as const

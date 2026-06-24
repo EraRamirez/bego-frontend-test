@@ -1,5 +1,6 @@
 import { getOrderTypeIcon } from '../constants/assets'
 import { isBlueStatus } from '../utils/order'
+import { translateStatus } from '../utils/translate'
 import Text from './ui/Text'
 
 interface OrderCardHeaderProps {
@@ -34,7 +35,7 @@ export default function OrderCardHeader({
           <span className="status-pill-dot status-pill-dot--blue" aria-hidden="true" />
         )}
         <Text as="span" variant="card-status">
-          {status}
+          {translateStatus(status)}
         </Text>
       </div>
     </div>

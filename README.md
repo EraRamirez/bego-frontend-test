@@ -1,6 +1,6 @@
 # BeGo — Prueba técnica Frontend
 
-Implementación de las pantallas **Cargo Orders** y **Cargo Details** para la prueba técnica de Frontend en BeGo.
+Implementación de las pantallas **Pedidos de carga** y **Detalle de carga** para la prueba técnica de Frontend en BeGo.
 
 ## Stack
 
@@ -49,17 +49,17 @@ Base URL: `https://129bc152-6319-4e38-b755-534a4ee46195.mock.pstmn.io`
 
 ## Funcionalidades
 
-### Cargo Orders
+### Pedidos de carga
 - Listado de órdenes desde la API
 - Búsqueda por número de orden
-- Countdown con `start_date`; al terminar habilita el botón y registra `Navegar` en consola
-- Navegación a detalle con el botón **Resume**
+- Cuenta regresiva con `start_date`; al terminar habilita el botón y registra `Navegar` en consola
+- Navegación a detalle con el botón **Continuar**
 
-### Cargo Details
-- Switch **Pickup / Dropoff** con datos de `destinations`
-- Timeline con checks según `status_list`
-- Botón **Track Order** activo solo si `status >= 3`
-- Panel **Pickup Data** expandible (accordion)
+### Detalle de carga
+- Selector **Recogida / Entrega** con datos de `destinations`
+- Línea de tiempo con checks según `status_list`
+- Botón **Rastrear pedido** activo solo si `status >= 3`
+- Panel **Datos de recogida** expandible (acordeón)
 - Avatar predeterminado si no hay imagen
 
 ## Estructura del proyecto

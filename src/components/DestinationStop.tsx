@@ -6,6 +6,7 @@ import {
   getDestinationTimestamp,
 } from '../utils/date'
 import { isDestinationActiveState } from '../utils/order'
+import { translateStatus } from '../utils/translate'
 import ExpandableText from './ExpandableText'
 import StatusPill from './StatusPill'
 import Text from './ui/Text'
@@ -71,7 +72,7 @@ export default function DestinationStop({
       </div>
 
       {mode === 'selectable' && (
-        <StatusPill label={statusLabel} isBlue={isBlue} isActive={isActive} />
+        <StatusPill label={translateStatus(statusLabel)} isBlue={isBlue} isActive={isActive} />
       )}
     </>
   )

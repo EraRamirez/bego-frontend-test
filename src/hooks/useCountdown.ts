@@ -21,7 +21,7 @@ function logNavegarOnce(
   navegarLoggedKeys.add(key)
   const orderLabel =
     orderNumber !== undefined && orderNumber !== ''
-      ? `Navegar - Order #${orderNumber}`
+      ? `Navegar - Pedido #${orderNumber}`
       : 'Navegar'
   console.log(orderLabel)
 }
