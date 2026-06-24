@@ -1,5 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
+import EmptyOrdersState from '../components/EmptyOrdersState'
+import LoadingScreen from '../components/LoadingScreen'
 import OrderCard from '../components/OrderCard'
+import OrderHeading from '../components/OrderHeading'
 import PageHeader from '../components/PageHeader'
 import SearchBar from '../components/SearchBar'
 import Tabs from '../components/Tabs'
@@ -30,20 +33,36 @@ export default function OrdersPage() {
     <div className="pb-8">
       <PageHeader title="Cargo Orders" />
 
-      <Tabs active={tab} onChange={setTab} />
-      <SearchBar value={search} onChange={setSearch} />
+      <div className="page-gutter">
+        <Tabs active={tab} onChange={setTab} />
+        <SearchBar value={search} onChange={setSearch} />
 
-      <div className="mt-4 space-y-4 px-4">
-        {loading && <p className="text-[#9ca3af]">Loading...</p>}
-        {error && <p className="text-red-400">{error}</p>}
+        <div className="mt-5 space-y-5">
+          {loading && (
+            <LoadingScreen
+              variant="inline"
+              message="Loading orders"
+              description="Fetching your cargo trips..."
+            />
+          )}
+          {error && <p className="text-red-400">{error}</p>}
 
-        {!loading && !error && filteredOrders.length === 0 && (
-          <p className="text-center text-[#9ca3af]">No orders found</p>
-        )}
+          {!loading && !error && filteredOrders.length === 0 && (
+            <EmptyOrdersState
+              key={`${tab}-${search.trim()}`}
+              tab={tab}
+              search={search}
+              onClearSearch={() => setSearch('')}
+            />
+          )}
 
-        {filteredOrders.map((order) => (
-          <OrderCard key={order._id} order={order} />
-        ))}
+          {filteredOrders.map((order) => (
+            <div key={order._id} className="space-y-2">
+              <OrderHeading orderNumber={order.order_number} />
+              <OrderCard order={order} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )

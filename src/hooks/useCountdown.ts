@@ -5,28 +5,53 @@ interface UseCountdownResult {
   isReady: boolean
 }
 
-export function useCountdown(targetTimestamp: number): UseCountdownResult {
-  const [remaining, setRemaining] = useState(() =>
-    Math.max(0, targetTimestamp - Date.now()),
-  )
-  const [navigateLogged, setNavigateLogged] = useState(false)
+const navegarLoggedKeys = new Set<string>()
+
+function getRemainingMs(targetTimestamp: number): number {
+  return Math.max(0, targetTimestamp - Date.now())
+}
+
+function logNavegarOnce(
+  targetTimestamp: number,
+  orderNumber?: string | number,
+): void {
+  const key = `${String(orderNumber ?? 'order')}-${targetTimestamp}`
+  if (navegarLoggedKeys.has(key)) return
+
+  navegarLoggedKeys.add(key)
+  const orderLabel =
+    orderNumber !== undefined && orderNumber !== ''
+      ? `Navegar - Order #${orderNumber}`
+      : 'Navegar'
+  console.log(orderLabel)
+}
+
+export function useCountdown(
+  targetTimestamp: number,
+  orderNumber?: string | number,
+): UseCountdownResult {
+  const [remaining, setRemaining] = useState(() => getRemainingMs(targetTimestamp))
 
   useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      const timeLeft = Math.max(0, targetTimestamp - Date.now())
+    const tick = () => {
+      const timeLeft = getRemainingMs(targetTimestamp)
       setRemaining(timeLeft)
 
-      if (timeLeft === 0 && !navigateLogged) {
-        console.log('Navegar')
-        setNavigateLogged(true)
+      if (timeLeft === 0) {
+        logNavegarOnce(targetTimestamp, orderNumber)
       }
-    }, 1000)
+    }
+
+    tick()
+    const intervalId = window.setInterval(tick, 1000)
 
     return () => window.clearInterval(intervalId)
-  }, [targetTimestamp, navigateLogged])
+  }, [targetTimestamp, orderNumber])
+
+  const isReady = remaining === 0
 
   return {
     remaining,
-    isReady: remaining === 0,
+    isReady,
   }
 }

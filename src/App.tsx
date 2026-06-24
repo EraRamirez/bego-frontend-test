@@ -5,11 +5,13 @@ import OrdersPage from './pages/OrdersPage'
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="mx-auto min-h-screen w-full max-w-[390px] bg-black">
-        <Routes>
-          <Route path="/" element={<OrdersPage />} />
-          <Route path="/orders/:orderNumber" element={<OrderDetailsPage />} />
-        </Routes>
+      <div className="app-shell-wrapper">
+        <div className="app-shell">
+          <Routes>
+            <Route path="/" element={<OrdersPage />} />
+            <Route path="/orders/:orderNumber" element={<OrderDetailsPage />} />
+          </Routes>
+        </div>
       </div>
     </BrowserRouter>
   )

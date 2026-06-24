@@ -23,10 +23,22 @@ export function formatTime(ms?: number): string {
   if (!ms) return ''
 
   return new Date(ms).toLocaleTimeString('en-US', {
-    hour: '2-digit',
+    hour: 'numeric',
     minute: '2-digit',
-    hour12: false,
+    hour12: true,
   })
+}
+
+export function formatPanelDateTime(ms?: number): string {
+  if (!ms) return ''
+
+  const date = new Date(ms)
+  const day = date.getDate()
+  const month = date.toLocaleDateString('es-MX', { month: 'long' })
+  const monthLabel = month.charAt(0).toUpperCase() + month.slice(1)
+  const year = date.getFullYear()
+
+  return `${day} de ${monthLabel} ${year} • ${formatTime(ms)}`
 }
 
 export function formatLongDate(ms?: number): string {
@@ -44,8 +56,10 @@ export function formatLongDate(ms?: number): string {
 export function cityFromAddress(address?: string): string {
   if (!address) return '—'
 
-  const parts = address.split(',')
-  return parts[parts.length - 3]?.trim() || parts[0]?.trim() || '—'
+  const parts = address.split(',').map((part) => part.trim())
+  const rawCity = parts[parts.length - 3] || parts[1] || parts[0] || '—'
+
+  return rawCity.replace(/^\d+\s*/, '').trim() || rawCity
 }
 
 export function getDestinationTimestamp(destination?: {
