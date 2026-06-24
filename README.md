@@ -7,7 +7,7 @@ Implementación de las pantallas **Pedidos de carga** y **Detalle de carga** par
 | | Enlace |
 |---|---|
 | **Repositorio** | https://github.com/EraRamirez/bego-frontend-test |
-| **Deploy** | https://bego-frontend-test.vercel.app *(despliegue)* |
+| **Deploy** | https://frontend-test-nine-ashen.vercel.app |
 
 ## Stack
 
