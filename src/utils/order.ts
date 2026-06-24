@@ -59,11 +59,17 @@ function mergeDestinations(
       endDate: fromList?.endDate ?? fromDetail?.endDate,
       nickname: fromList?.nickname ?? fromDetail?.nickname,
       show_navigation: fromList?.show_navigation ?? fromDetail?.show_navigation,
-      status_string: fromList?.status_string ?? fromDetail?.status_string,
-      status_class: fromList?.status_class ?? fromDetail?.status_class,
+      // La lista no trae status por parada; no heredar el del detalle
+      // para que los fallbacks (Aceptado / En espera) definan icono y pill.
+      status_string: fromList?.status_string,
+      status_class: fromList?.status_class,
       contact_info: fromList?.contact_info ?? fromDetail?.contact_info,
     }
   })
+}
+
+function stripDestinationStatus(destinations: Destination[] = []): Destination[] {
+  return destinations.map(({ status_string: _s, status_class: _c, ...rest }) => rest)
 }
 
 export function mergeOrderDetail(
@@ -73,7 +79,7 @@ export function mergeOrderDetail(
 ): OrderDetail {
   const destinations = listOrder?.destinations
     ? mergeDestinations(listOrder.destinations, detail.destinations)
-    : detail.destinations
+    : stripDestinationStatus(detail.destinations)
 
   const merged: OrderDetail = {
     ...detail,
