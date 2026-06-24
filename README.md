@@ -88,20 +88,6 @@ src/
 └── main.tsx
 ```
 
-## Deploy en Vercel
-
-1. Entra a [vercel.com](https://vercel.com) e inicia sesión con GitHub.
-2. **Add New → Project** → importa `EraRamirez/bego-frontend-test`.
-3. Vercel detecta Vite automáticamente. No cambies el build command:
-   - **Build Command:** `npm run build`
-   - **Output Directory:** `dist`
-4. *(Opcional)* En **Environment Variables**, añade:
-   - `VITE_API_BASE_URL` = `https://129bc152-6319-4e38-b755-534a4ee46195.mock.pstmn.io`
-5. Click **Deploy**.
-6. Cuando termine, copia la URL (ej. `https://bego-frontend-test.vercel.app`) y actualízala en la tabla **Enlaces de entrega** de arriba.
-
-El archivo `vercel.json` incluye rewrites para que React Router funcione al recargar rutas como `/orders/RF41647Q`.
-
 ## Autora
 
 Erandi Guadalupe Ramírez Ayala
